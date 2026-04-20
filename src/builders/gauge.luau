@@ -1,4 +1,5 @@
 local Block = require("./block")
+
 local setCell = require("../utilities/setCell")
 local utf8len = require("../utilities/utf8len")
 local utf8sub = require("../utilities/utf8sub")

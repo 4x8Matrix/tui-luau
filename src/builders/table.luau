@@ -1,4 +1,5 @@
 local Block = require("./block")
+
 local setCell = require("../utilities/setCell")
 local utf8len = require("../utilities/utf8len")
 local utf8sub = require("../utilities/utf8sub")
@@ -29,9 +30,7 @@ local function renderRow(
 			continue
 		end
 
-		local visibleText = if utf8len(cell) > columnWidth
-			then utf8sub(cell, 1, columnWidth - 1) .. "…"
-			else cell
+		local visibleText = if utf8len(cell) > columnWidth then utf8sub(cell, 1, columnWidth - 1) .. "…" else cell
 		local characterOffset = 0
 
 		for byteStart, _ in utf8.codes(visibleText) do

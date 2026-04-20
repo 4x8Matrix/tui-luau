@@ -1,4 +1,5 @@
 local Block = require("./block")
+
 local setCell = require("../utilities/setCell")
 
 --[=[
@@ -47,7 +48,11 @@ end
 	@method
 	@within Sparkline
 ]=]
-function Sparkline.Prototype.setStyle(self: SparklineBuilder, foreground: number?, background: number?): SparklineBuilder
+function Sparkline.Prototype.setStyle(
+	self: SparklineBuilder,
+	foreground: number?,
+	background: number?
+): SparklineBuilder
 	self.style.foreground = foreground
 	self.style.background = background
 
@@ -87,13 +92,10 @@ function Sparkline.Prototype.render(
 	local foreground = self.style.foreground or 0
 	local totalSubUnits = renderArea.height * 8
 
-	local resolvedMax = self.max
-	if not resolvedMax then
-		resolvedMax = self.data[1]
-		for _, value in self.data do
-			if value > resolvedMax then
-				resolvedMax = value
-			end
+	local resolvedMax: number = self.max or self.data[1]
+	for _, value in self.data do
+		if value > resolvedMax then
+			resolvedMax = value
 		end
 	end
 

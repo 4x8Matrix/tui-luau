@@ -1,4 +1,5 @@
 local Block = require("./block")
+
 local setCell = require("../utilities/setCell")
 
 --[=[
@@ -174,16 +175,7 @@ function Tabs.Prototype.render(
 
 		local paddedLabel = " " .. tabName .. " "
 
-		cursorX += renderText(
-			paddedLabel,
-			cursorX,
-			rowY,
-			maxX,
-			tabForeground,
-			tabBackground,
-			context,
-			renderBuffer
-		)
+		cursorX += renderText(paddedLabel, cursorX, rowY, maxX, tabForeground, tabBackground, context, renderBuffer)
 	end
 
 	for fillX = cursorX, maxX - 1 do

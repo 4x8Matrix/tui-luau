@@ -1,4 +1,5 @@
 local Block = require("./block")
+
 local setCell = require("../utilities/setCell")
 local utf8len = require("../utilities/utf8len")
 
@@ -89,11 +90,7 @@ end
 	@method
 	@within Input
 ]=]
-function Input.Prototype.setPlaceholderStyle(
-	self: InputBuilder,
-	foreground: number?,
-	background: number?
-): InputBuilder
+function Input.Prototype.setPlaceholderStyle(self: InputBuilder, foreground: number?, background: number?): InputBuilder
 	self.placeholderStyle.foreground = foreground
 	self.placeholderStyle.background = background
 

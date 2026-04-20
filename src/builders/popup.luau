@@ -1,4 +1,5 @@
 local Block = require("./block")
+
 local setCell = require("../utilities/setCell")
 
 --[=[
@@ -105,7 +106,11 @@ end
 ]=]
 function Popup.Prototype.addTitle(
 	self: PopupBuilder,
-	title: { text: string, alignment: ("left" | "center" | "right")?, position: ("top" | "bottom")? }
+	title: {
+		text: string,
+		alignment: ("left" | "center" | "right")?,
+		position: ("top" | "bottom")?,
+	}
 ): PopupBuilder
 	self.block:addTitle(title)
 
