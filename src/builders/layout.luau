@@ -65,13 +65,16 @@ function Layout.Prototype.split(self: LayoutBuilder, area: Rect): { Rect }
 		for index, currentConstraint in self.constraints do
 			if currentConstraint.type == "fill" then
 				sizes[index] = math.min(math.floor(available * currentConstraint.value / totalWeight), available)
+				available -= sizes[index]
 			elseif currentConstraint.type == "min" then
 				sizes[index] =
 					math.min(math.max(currentConstraint.value, math.floor(available / totalWeight)), available)
+				available -= sizes[index]
 			elseif currentConstraint.type == "max" then
 				sizes[index] = math.min(currentConstraint.value, math.floor(available / totalWeight))
+				available -= sizes[index]
 			end
-			available -= sizes[index]
+			-- length/percentage: already processed and subtracted in the first loop
 		end
 	end
 
